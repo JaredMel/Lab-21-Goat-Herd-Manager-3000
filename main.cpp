@@ -15,17 +15,19 @@ class Goat {
             int randnum = rand() % 15;
             age = rand() % 19 + 1;
             name = names[randnum];
+            randnum = rand() % 15;
+            color = colors[randnum];
         }
-
+        Goat(int a, string n, string c) {age = a; name = n; color = c;};
 };
 
 class DoublyLinkedList {
     private:
         struct Node {
-            int data;
+            Goat data;
             Node* prev;
             Node* next;
-            Node(int val, Node* p = nullptr, Node* n = nullptr) {
+            Node(Goat val, Node* p = nullptr, Node* n = nullptr) {
                 data = val;
                 prev = p;
                 next = n;
@@ -38,7 +40,7 @@ class DoublyLinkedList {
         // constructor
         DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-        void push_back(int value) {
+        void push_back(Goat value) {
             Node* newNode = new Node(value);
             if (!tail) // if there's no tail, the list is empty
                 head = tail = newNode;
@@ -49,7 +51,7 @@ class DoublyLinkedList {
             }
         }
 
-        void push_front(int value) {
+        void push_front(Goat value) {
             Node* newNode = new Node(value);
             if (!head) // if there's no head, the list is empty
                 head = tail = newNode;
@@ -60,7 +62,7 @@ class DoublyLinkedList {
             }
         }
 
-        void insert_after(int value, int position) {
+        void insert_after(Goat value, int position) {
             if (position < 0) {
                 cout << "Position must be >= 0." << endl;
                 return;
@@ -90,7 +92,7 @@ class DoublyLinkedList {
                 temp->next = newNode;
         }
 
-        void delete_node(int value) {
+        void delete_node(Goat value) {
             if (!head) return; // Empty list
 
             Node* temp = head;
@@ -147,6 +149,13 @@ class DoublyLinkedList {
 int main() {
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+
+    for (size_t i = 0; i < size; i++)
+    {
+        Goat *temp = new Goat;
+        insert_after()
+    }
+    
 
     for (int i = 0; i < size; ++i)
         list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
