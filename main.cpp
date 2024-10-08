@@ -24,7 +24,7 @@ class Goat {
 
         void printGoat(Goat g) 
         {
-            cout << g.name << " (" << g.color << ", " << g.age << ")";
+            cout << g.name << " (" << g.color << ", " << g.age << ")" << endl;
         }
 };
 
@@ -155,18 +155,18 @@ class DoublyLinkedList {
 // Driver program
 int main() {
     DoublyLinkedList list;
-    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS; //Tried to use srand(time(0)) but for some reason wouldn't allow me.
 
     for (size_t i = 0; i < size; i++)
     {
         Goat temp = Goat();
-        list.insert_after(temp, i);
+        list.push_back(temp);
     }
     
-    cout << "List forward: ";
+    cout << "List forward: " << endl;
     list.print();
 
-    cout << "List backward: ";
+    cout << "List backward: " << endl;
     list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
