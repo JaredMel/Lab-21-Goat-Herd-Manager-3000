@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -130,7 +132,7 @@ class DoublyLinkedList {
             Node* current = tail;
             if (!current) return;
             while (current) {
-                cout << current->data << " ";
+                cout << current->data.name << " (" << current->data.color << ", " << current->data.age << ")";
                 current = current->prev;
             }
             cout << endl;
@@ -148,17 +150,17 @@ class DoublyLinkedList {
 // Driver program
 int main() {
     DoublyLinkedList list;
-    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+    int size = srand(time(0)) % (MAX_LS-MIN_LS+1) + MIN_LS;
 
     for (size_t i = 0; i < size; i++)
     {
-        Goat *temp = new Goat;
-        insert_after()
+        Goat temp = Goat();
+        list.insert_after(temp, i);
     }
     
 
     for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+        list.push_back(srand(time(0)) % (MAX_NR-MIN_NR+1) + MIN_NR);
     cout << "List forward: ";
     list.print();
 
