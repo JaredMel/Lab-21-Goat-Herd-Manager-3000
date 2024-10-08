@@ -21,6 +21,11 @@ class Goat {
             color = colors[randnum];
         }
         Goat(int a, string n, string c) {age = a; name = n; color = c;};
+
+        void printGoat(Goat g) 
+        {
+            cout << g.name << " (" << g.color << ", " << g.age << ")";
+        }
 };
 
 class DoublyLinkedList {
@@ -94,7 +99,7 @@ class DoublyLinkedList {
                 temp->next = newNode;
         }
 
-        void delete_node(Goat value) {
+        /*void delete_node(Goat value) {
             if (!head) return; // Empty list
 
             Node* temp = head;
@@ -116,13 +121,13 @@ class DoublyLinkedList {
             }
 
             delete temp;
-        }
+        }*/
 
         void print() {
             Node* current = head;
             if (!current) return;
             while (current) {
-                cout << current->data << " ";
+                current->data.printGoat(current->data);
                 current = current->next;
             }
             cout << endl;
@@ -132,7 +137,7 @@ class DoublyLinkedList {
             Node* current = tail;
             if (!current) return;
             while (current) {
-                cout << current->data.name << " (" << current->data.color << ", " << current->data.age << ")";
+                current->data.printGoat(current->data);
                 current = current->prev;
             }
             cout << endl;
@@ -150,7 +155,7 @@ class DoublyLinkedList {
 // Driver program
 int main() {
     DoublyLinkedList list;
-    int size = srand(time(0)) % (MAX_LS-MIN_LS+1) + MIN_LS;
+    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
     for (size_t i = 0; i < size; i++)
     {
@@ -158,9 +163,6 @@ int main() {
         list.insert_after(temp, i);
     }
     
-
-    for (int i = 0; i < size; ++i)
-        list.push_back(srand(time(0)) % (MAX_NR-MIN_NR+1) + MIN_NR);
     cout << "List forward: ";
     list.print();
 
